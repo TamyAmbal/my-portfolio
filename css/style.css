@@ -558,6 +558,79 @@ h1, h2, h3, .logo-square {
     font-size: 18px;
 }
 
+/* КОНТЕЙНЕР ДЛЯ КНОПКИ */
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ГЛАВНАЯ КНОПКА */
+.main-contact-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #007bff;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite; /* Анимация пульсации */
+}
+
+/* МЕНЮ С ПОДКНОПКАМИ (скрыто по умолчанию) */
+.contact-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s;
+}
+
+/* ПОКАЗЫВАЕМ МЕНЮ ПРИ КЛАССЕ ACTIVE */
+.floating-contact.active .contact-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* СТИЛИ ПОДКНОПОК */
+.contact-item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-item.wa { background: #25d366; }
+.contact-item.tg { background: #0088cc; }
+
+/* АНИМАЦИЯ ПУЛЬСАЦИИ */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
 /* Магия адаптивности: когда экран меньше 768px */
 @media (max-width: 768px) {
   .header-content, .container-grid, .container-flex {
