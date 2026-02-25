@@ -315,6 +315,28 @@
       item.classList.toggle('active');
     });
   });
+
+  // ЛОГИКА ПЛАВАЮЩЕЙ КНОПКИ
+  const contactBtn = document.querySelector('.main-contact-btn');
+  const contactWrapper = document.querySelector('.floating-contact');
+
+  contactBtn.addEventListener('click', () => {
+    contactWrapper.classList.toggle('active');
+    // Поворачиваем иконку при нажатии
+    contactBtn.style.transform = contactWrapper.classList.contains('active') 
+      ? 'rotate(90deg)' 
+      : 'rotate(0deg)';
+  });
+
+  // Закрываем меню, если кликнули вне кнопки
+  document.addEventListener('click', (e) => {
+    if (!contactWrapper.contains(e.target)) {
+      contactWrapper.classList.remove('active');
+      contactBtn.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  
 </script>
 
   </body>
