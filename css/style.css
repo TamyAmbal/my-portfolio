@@ -126,12 +126,13 @@ h1, h2, h3, .logo-square {
   background-color: #f9f9f9;
 }
 
-.container-grid {
+.features-grid {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Создает 3 равные колонки */
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;       /* ГЛАВНОЕ: разрешаем перенос на новую строку */
+  gap: 20px;             /* Расстояние между карточками */
+  justify-content: center; /* Центрируем, если карточка осталась одна в ряду */
   padding: 0 20px;
 }
 
@@ -142,6 +143,9 @@ h1, h2, h3, .logo-square {
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   text-align: center;
   transition: 0.3s;
+  flex: 1 1 300px;       /* Минимум 300px, но могут растягиваться */
+  min-width: 280px;      /* Чтобы на совсем узких телефонах не сжимались меньше 280px */
+  box-sizing: border-box; /* Чтобы отступы не увеличивали ширину карточки */
 }
 
 .feature-card:hover {
@@ -631,23 +635,21 @@ h1, h2, h3, .logo-square {
   100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
 }
 
-/* Магия адаптивности: когда экран меньше 768px */
+/* НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (Экраны меньше 768px) */
 @media (max-width: 768px) {
-  .header-content, .container-grid, .container-flex {
-    flex-direction: column; /* Складываем элементы в столбик */
-    text-align: center;
+  .features-grid {
+    flex-direction: column; /* Выстраиваем карточки строго в колонку, одну под другой */
+    align-items: center;
   }
-  
-  .main-nav {
-    margin: 20px 0;
+
+  .feature-card {
+    width: 100%;           /* Карточка занимает всю ширину экрана */
+    max-width: 400px;      /* Но не становится слишком огромной */
   }
-  
-  .hero h1 {
-    font-size: 28px; /* Уменьшаем текст для мобилок */
-  }
-  
-  .skills-list {
-    margin-top: 30px;
+
+  /* Исправляем возможный вылет всей страницы */
+  body {
+    overflow-x: hidden;    /* Запрещаем горизонтальный скролл на корню */
   }
 }
 
