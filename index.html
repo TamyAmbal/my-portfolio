@@ -196,21 +196,26 @@
 
 <section class="contact-section" id="contacts">
   <div class="container">
-    <h2>Обсудим твой проект?</h2>
-    <p>Оставь свои контакты, и я свяжусь с тобой в течение часа.</p>
-    
-    <form class="contact-form">
-      <div class="form-group">
-        <input type="text" placeholder="Твое имя" required>
+    <h2>Связаться со мной</h2>
+    <div class="contact-grid">
+      
+      <div class="contact-info">
+        <h3>Позвоните мне напрямую:</h3>
+        <p>Отвечаю быстро, консультирую бесплатно</p>
+        <a href="tel:+79991234567" class="phone-link">+7 (988) 839-68-29</a>
+        <a href="tel:+79991234567" class="btn-call">📞 Позвонить сейчас</a>
       </div>
-      <div class="form-group">
-        <input type="email" placeholder="Твой Email" required>
+
+      <div class="contact-form-box">
+        <h3>Я вам перезвоню</h3>
+        <form id="callback-form">
+          <input type="text" placeholder="Ваше имя" required>
+          <input type="tel" placeholder="Ваш телефон" required>
+          <button type="submit" class="btn-submit">Оставить заявку</button>
+        </form>
       </div>
-      <div class="form-group">
-        <textarea placeholder="Расскажи о своей идее..."></textarea>
-      </div>
-      <button type="submit" class="submit-btn">Отправить заявку</button>
-    </form>
+
+    </div>
   </div>
 </section>
 
