@@ -1,3 +1,14 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* ГЛАВНОЕ: отключает горизонтальную прокрутку */
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box; /* Гарантирует, что рамки и отступы не распирают блоки */
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -103,10 +114,22 @@ h1, h2, h3, .logo-square {
   background-position: center;
   color: white;
   padding-top: 80px; /* Добавь этот отступ, чтобы текст не скрылся под шапкой */
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box; /* Чтобы паддинги не расширяли блок */
 }
 
-.hero h1 { font-size: 48px; margin-bottom: 20px; font-family: sans-serif; }
-.hero p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
+.hero h1 { 
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+  word-wrap: break-word; /* Позволяет переносить длинные слова */
+  line-height: 1.2;
+         }
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  opacity: 0.9; }
 
 .hero-btn {
   padding: 15px 30px;
