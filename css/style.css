@@ -30,7 +30,8 @@ h1, h2, h3, .logo-square {
 section h2, 
 .section-title, 
 .gallery-grid + h2,
-.benefits h2 {
+.benefits h2 
+.contact-section h2 {
     text-align: center !important; /* !important гарантирует, что центр победит */
     width: 100%;
     margin-top: 0;
