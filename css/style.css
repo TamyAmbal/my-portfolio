@@ -389,6 +389,19 @@ section h2,
     animation: pulse 2s infinite;
 }
 
+/* Центрируем иконки внутри кружков */
+.contact-item, .main-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.contact-item i, .main-contact-btn i {
+    font-size: 24px;
+    color: #fff;
+}
+
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
