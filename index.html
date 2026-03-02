@@ -206,14 +206,15 @@
         <a href="tel:+79991234567" class="btn-call">📞 Позвонить сейчас</a>
       </div>
 
-      <div class="contact-form-box">
-        <h3>Я вам перезвоню</h3>
-        <form id="callback-form">
-          <input type="text" placeholder="Ваше имя" required>
-          <input type="tel" placeholder="Ваш телефон" required>
-          <button type="submit" class="btn-submit">Оставить заявку</button>
-        </form>
-      </div>
+      <form action="https://formspree.io/f/xykdqwya" method="POST" id="callback-form">
+  <input type="text" name="name" placeholder="Ваше имя" required>
+  
+  <input type="tel" name="phone" placeholder="Ваш телефон" required>
+  
+  <input type="hidden" name="_subject" value="Новая заявка: Электромонтаж">
+
+  <button type="submit" class="btn-submit">Перезвоните мне</button>
+</form>
 
     </div>
   </div>
@@ -266,18 +267,39 @@
 </div>
 
 <script>
-  // Находим нашу форму в документе
-  const form = document.querySelector('.contact-form');
+  const form = document.getElementById('callback-form');
   
-  // Вешаем «слушатель» на кнопку отправки
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Останавливаем перезагрузку страницы
+  form.onsubmit = async (e) => {
+    e.preventDefault(); // Запрещаем странице перезагружаться
+    const button = form.querySelector('.btn-submit');
     
-    // Показываем сообщение (в будущем тут будет отправка на почту)
-    alert('Спасибо! Заявка принята. Я свяжусь с вами в ближайшее время.');
+    // Визуальный отклик: кнопка меняется
+    button.disabled = true;
+    button.innerText = 'Отправка...';
+
+    const formData = new FormData(form);
     
-    form.reset(); // Очищаем поля формы
-  });
+    // Отправляем данные на сервис Formspree
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Если всё успешно — заменяем форму на сообщение о триумфе
+      form.innerHTML = `
+        <div style="padding: 20px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+          <h3>Заявка принята!</h3>
+          <p>Я свяжусь с вами в ближайшее время.</p>
+        </div>`;
+    } else {
+      // Если что-то сломалось — возвращаем кнопку
+      button.disabled = false;
+      button.innerText = 'Ошибка. Попробовать еще раз';
+      alert('Произошла ошибка при отправке. Пожалуйста, позвоните мне напрямую.');
+    }
+  };
 
   // ФУНКЦИЯ ДЛЯ АНИМАЦИИ ПРИ СКРОЛЛЕ
   function reveal() {
