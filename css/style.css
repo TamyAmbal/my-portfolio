@@ -30,8 +30,8 @@ h1, h2, h3, .logo-square {
 section h2, 
 .section-title, 
 .gallery-grid + h2,
-.benefits h2 
-.contact-section h2 {
+.benefits h2
+.contact-section h2{
     text-align: center !important; /* !important гарантирует, что центр победит */
     width: 100%;
     margin-top: 0;
@@ -380,27 +380,61 @@ section h2,
     z-index: 2000;
 }
 
+/* ВОЗВРАЩАЕМ КРАСОТУ КНОПКАМ МЕССЕНДЖЕРОВ */
+
+/* Общие стили для кружков */
+.contact-item {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+/* Иконки внутри кружков */
+.contact-item i {
+    font-size: 24px !important; /* Делаем иконку крупнее */
+    color: white !important;   /* Цвет иконки всегда белый */
+}
+
+/* Фирменные цвета */
+.contact-item.wa {
+    background-color: #25d366 !important; /* Зеленый WhatsApp */
+}
+
+.contact-item.tg {
+    background-color: #0088cc !important; /* Синий Telegram */
+}
+
+/* Главная кнопка чата (синяя) */
 .main-contact-btn {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #007bff; border: none; color: white;
-    font-size: 24px; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    display: flex; align-items: center; justify-content: center;
-    animation: pulse 2s infinite;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background-color: #007bff !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
 }
 
-/* Центрируем иконки внутри кружков */
-.contact-item, .main-contact-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+.main-contact-btn i {
+    font-size: 28px !important;
+    color: white !important;
 }
 
-.contact-item i, .main-contact-btn i {
-    font-size: 24px;
-    color: #fff;
+/* Эффект при наведении */
+.contact-item:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
+
+
 
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
@@ -425,3 +459,4 @@ section h2,
     
     .footer-container { flex-direction: column; text-align: center; }
 }
+
